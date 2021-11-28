@@ -24,8 +24,8 @@ jobs:
           npm run build
       - name: Compare Built Directories
         run: |
-          echo $(diff $GITHUB_WORKSPACE/original-pr/lib $GITHUB_WORKSPACE/built-pr/lib -r)
-          DIFF=$(diff $GITHUB_WORKSPACE/original-pr/lib $GITHUB_WORKSPACE/built-pr/lib -r)
+          echo $(diff $GITHUB_WORKSPACE/original-pr/lib $GITHUB_WORKSPACE/built-pr/lib -rq)
+          DIFF=$(diff $GITHUB_WORKSPACE/original-pr/lib $GITHUB_WORKSPACE/built-pr/lib -rq)
           echo "hello"
           echo $DIFF
           echo "test2"
