@@ -40,7 +40,7 @@ export class HelmRenderEngine extends RenderEngine {
         console.log("Running helm dependency update command..");
         await utilities.execCommand(helmPath, dependencyArgs, options);
 
-        console.log("Getting helm version..");
+        console.log("Getting helm version.....");
         let isV3 = true;
         await this.isHelmV3(helmPath).then((result) => { isV3 = result }).catch(() => { isV3 = false });
         
