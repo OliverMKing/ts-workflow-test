@@ -26,7 +26,7 @@ jobs:
         run: |
           echo "DIFF=$(diff $GITHUB_WORKSPACE/built-pr/lib $GITHUB_WORKSPACE/built-pr/lib -r)" >> $GITHUB_ENV
       - name: Comment Unbuilt TypeScript
-        if: env.DIFF != ""
+        if: env.DIFF != ''
         uses: actions/github-script@v2
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
