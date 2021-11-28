@@ -24,19 +24,6 @@ jobs:
           npm run build
       - name: Compare Built Directories
         run: |
-          echo "DIFF=$(diff $GITHUB_WORKSPACE/built-pr/lib $GITHUB_WORKSPACE/built-pr/lib -r)" >> $GITHUB_ENV
-      - name: Comment Unbuilt TypeScript
-        if: env.DIFF != ''
-        uses: actions/github-script@v2
-        with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          script: |
-            github.issues.createComment({
-              issue_number: ${{ github.event.number }},
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: 'Please compile the TypeScript code with `npm run build`. The compiled JavaScript is not up-to-date.'
-            })
           DIFF=$(diff $GITHUB_WORKSPACE/built-pr/lib $GITHUB_WORKSPACE/built-pr/lib -r)
           if [ "$DIFF" != "" ]; then exit 1; else echo -e "PR contains up-to-date compiled JavaScript."; fi
       - name: Comment Unbuilt TypeScript
