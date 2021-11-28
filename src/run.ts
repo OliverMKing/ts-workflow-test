@@ -18,7 +18,7 @@ abstract class RenderEngine {
     protected getTemplatePath = () => {
         const tempDirectory = process.env['RUNNER_TEMP'];
         if (!!tempDirectory) {
-            return path.join(tempDirectory, 'baked-templateasdfsadfsd-' + utilities.getCurrentTime().toString() + '.yaml');
+            return path.join(tempDirectory, 'baked-template-' + utilities.getCurrentTime().toString() + '.yaml');
         }
         else {
             throw Error("Unable to create temp directory.");
