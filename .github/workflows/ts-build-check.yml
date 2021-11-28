@@ -29,7 +29,7 @@ jobs:
           echo "BUILD_DIFF=$(echo $DIFF)" >> $GITHUB_ENV
           if [ "$DIFF" != "" ]; then exit 1; else echo -e "PR contains up-to-date compiled JavaScript."; fi
       - name: Comment Unbuilt TypeScript
-        if: failure() && env.DIFF != ''
+        if: failure() && env.BUILD_DIFF != ''
         uses: actions/github-script@v2
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
