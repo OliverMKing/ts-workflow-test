@@ -24,8 +24,8 @@ jobs:
           npm run build
       - name: Compare Built Directories
         run: |
-          echo $(diff $GITHUB_WORKSPACE/original-pr/lib $GITHUB_WORKSPACE/built-pr/lib -rq)
-          DIFF=$(diff $GITHUB_WORKSPACE/original-pr/lib $GITHUB_WORKSPACE/built-pr/lib -rq)
+          echo $(diff $GITHUB_WORKSPACE/original-pr/lib $GITHUB_WORKSPACE/built-pr/lib -rqiEZbwBd)
+          DIFF=$(diff $GITHUB_WORKSPACE/original-pr/lib $GITHUB_WORKSPACE/built-pr/lib -rqiEZbwBd)
           echo "BUILD_DIFF=$(echo $DIFF)" >> $GITHUB_ENV
           if [ "$DIFF" != "" ]; then exit 1; else echo -e "PR contains up-to-date compiled JavaScript."; fi
       - name: Comment Unbuilt TypeScript
