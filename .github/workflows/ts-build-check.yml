@@ -25,8 +25,8 @@ jobs:
       - name: Compare Built Directories
         run: |
           DIFF=$(diff $GITHUB_WORKSPACE/original-pr/lib $GITHUB_WORKSPACE/built-pr/lib -r)
-          if [ "$DIFF" != "" ]; then exit 1; else echo -e "PR contains up-to-date compiled JavaScript."; fi
           echo "DIFF=$DIFF" >> $GITHUB_ENV
+          if [ "$DIFF" != "" ]; then exit 1; else echo -e "PR contains up-to-date compiled JavaScript."; fi
       - name: Comment Unbuilt TypeScript
         if: failure() && env.DIFF != ''
         uses: actions/github-script@v2
