@@ -11,7 +11,7 @@ import * as toolCache from '@actions/tool-cache';
 import * as core from '@actions/core';
 import * as io from '@actions/io';
 
-const kubectlToolName = 'kubectl';
+const kubectlToolName = 'kubectl555';
 const stableKubectlVersion = 'v1.15.0';
 const stableVersionUrl = 'https://storage.googleapis.com/kubernetes-release/release/stable.txt';
 
