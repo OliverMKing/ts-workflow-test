@@ -19,10 +19,9 @@ jobs:
       - name: Clone and Build Pull Request
         run: |
           cp $GITHUB_WORKSPACE/original-pr/ $GITHUB_WORKSPACE/built-pr -r
-          cd $GITHUB_WORKSPACE/built-pr/
+          cd $GITHUB_WORKSPACE
           npm i
           npm run build
-          exit 1
       - name: Compare Built Directories
         id: diff
         run: |
