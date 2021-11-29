@@ -23,11 +23,12 @@ jobs:
           npm i
           npm run build
       - name: Compare Built Directories
+        id: diff
         run: |
           DIFF=$(diff $GITHUB_WORKSPACE/original-pr/lib $GITHUB_WORKSPACE/built-pr/lib -rqiEZbwBd)
           if [ "$DIFF" != "" ]; then exit 1; else echo -e "PR contains up-to-date compiled JavaScript."; fi
       - name: Comment Unbuilt TypeScript
-        if: failure()
+        if: (failure() && (${{ steps.diff.outcome }} == 'failure' ))
         uses: actions/github-script@v2
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
