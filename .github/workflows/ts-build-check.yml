@@ -22,6 +22,7 @@ jobs:
           cd $GITHUB_WORKSPACE/built-pr/
           npm i
           npm run build
+          exit 1
       - name: Compare Built Directories
         id: diff
         run: |
